@@ -13,7 +13,21 @@
 	
 <?php else:
 		$articleno = $_POST['articleno'];
-		$uri = file_get_contents('http://127.0.0.1:8080/webshopREST/articleManagement/article/'.$articleno);
+		$uri = @file_get_contents('http://127.0.0.1:8080/webshopREST/articleManagement/article/'.$articleno);
+		
+		// HTTP Status auslesen
+		if(isset($http_response_header[0]))
+		list($version,$status_code,$msg) = explode(' ',$http_response_header[0], 3);
+		
+		// HTTP Status ueberpruefen
+		if($status_code != 200) : ?>
+		
+		<div id="backlink"><a href="<?php print $FILE_URL; ?>?bereich=profilsuche">Anderen Artikel suchen</a></div>
+		<div class="error messages"><?php print 'Der Artikel mit der Artikelnummer "'.$articleno.'" existiert nicht.'; ?></div>
+		
+		<?php else:
+		
+		
 		$simple_xml = simplexml_load_string($uri);
 		
 		$price = $simple_xml->price;
@@ -32,5 +46,5 @@
 	<label for="stock">Auf Lager:</label><input type="text" name="stock" value="<?php print $simple_xml->stock; ?>"><br />
 	<label for="price">Zum Preis:</label><input type="text" name="price" value="<?php print $price; ?>">
 	</form>
-
+	<?php endif; ?>
 <?php endif; ?>

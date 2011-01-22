@@ -22,9 +22,20 @@
 	
 <?php else:
 		$email = $_POST['email'];
-		$uri = file_get_contents('http://127.0.0.1:8080/webshopREST/profileManagement/profile/'.$email);
+		$uri = @file_get_contents('http://127.0.0.1:8080/webshopREST/profileManagement/profile/'.$email);
+		
+		// HTTP Status auslesen
+		if(isset($http_response_header[0]))
+		list($version,$status_code,$msg) = explode(' ',$http_response_header[0], 3);
+		
+		// HTTP Status ueberpruefen
+		if($status_code != 200) : ?>
+		
+		<div id="backlink"><a href="<?php print $FILE_URL; ?>?bereich=profilsuche">Anderes Profil suchen</a></div>
+		<div class="error messages"><?php print 'Das Profil mit der E-Mail-Adresse "'.$email.'" existiert nicht.'; ?></div>
+		
+		<?php else:
 		$simple_xml = (array) simplexml_load_string($uri);
-
 	?>
 		<div id="backlink"><a href="<?php print $FILE_URL; ?>?bereich=profilsuche">Anderes Profil suchen</a></div>
 		<form action="<?php print $FILE_URL; ?>?bereich=profilsuche" method="post">
@@ -41,6 +52,18 @@
 			<?php if(isset($_POST['submit_show_orders'])) :
 				$order_email = $_POST['order-email'];
 				$uri = @file_get_contents('http://127.0.0.1:8080/webshopREST/orderManagement/orders?email='.$order_email);
+				
+				// HTTP Status auslesen
+				if(isset($http_response_header[0]))
+				list($version,$status_code,$msg) = explode(' ',$http_response_header[0], 3);
+				
+				// HTTP Status ueberpruefen
+				if($status_code != 200) : ?>
+				
+				<div class="error messages"><?php print 'Zu diesem Benutzer existieren keine Bestellungen.'; ?></div>
+				
+				<?php else:		
+				
 				$simple_xml = (array) simplexml_load_string($uri);
 				
 				$bestellungen = $simple_xml['order'];
@@ -63,6 +86,8 @@
 						
 				<?php endforeach; ?>
 				</div>
+				<?php endif; ?>
+				<?php endif; ?>
 			<?php endif; ?>
 	
 <?php endif; ?>
