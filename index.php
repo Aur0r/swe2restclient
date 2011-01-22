@@ -24,12 +24,12 @@ switch($_GET['bereich']) {
 		<?php 
 		include_once($BASE_DIR.'/includes/php/profilsuche.php');
 		break;
-	case 'artikelsuche':
+	/*case 'artikelsuche':
 		?>
 		<div id="mainmenulink"><a href="<?php print $FILE_URL; ?>">Zum Hauptmenü</a></div>
 		<?php 
 		include_once($BASE_DIR.'/includes/php/artikelsuche.php');
-		break;
+		break;*/
 	default:
 		include_once($BASE_DIR.'/includes/php/views/MainView.php');
 		break;
