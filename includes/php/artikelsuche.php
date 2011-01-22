@@ -16,7 +16,6 @@
 		$uri = file_get_contents('http://127.0.0.1:8080/webshopREST/articleManagement/article/'.$articleno);
 		$simple_xml = simplexml_load_string($uri);
 		
-		print_r($simple_xml);
 		$price = $simple_xml->price;
 		str_replace('.', ',', $price);
 		$price = $price.'€';
