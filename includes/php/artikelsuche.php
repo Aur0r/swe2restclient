@@ -19,7 +19,7 @@
 		// HTTP Status ueberpruefen
 		if($status_code != 200) : ?>
 		
-		<div id="backlink"><a href="<?php print $FILE_URL; ?>?bereich=profilsuche">Anderen Artikel suchen</a></div>
+		<div id="backlink"><a href="<?php print $FILE_URL; ?>?bereich=artikelsuche">Anderen Artikel suchen</a></div>
 		<div class="error messages"><?php print 'Der Artikel mit der Artikelnummer "'.$articleno.'" existiert nicht.'; ?></div>
 		
 		<?php else:

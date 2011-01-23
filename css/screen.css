@@ -30,6 +30,12 @@ h1 {
     color: #aaa;
 }
 
+h2 {
+    font-size: 20px;
+    font-family: Arial;
+    color: #aaa;
+}
+
 h1 span {
     font-size: 50%;
     letter-spacing: -0.05em;
@@ -92,3 +98,39 @@ ul {
     margin-bottom: 24px;
     padding-left: 30px;
 }
+
+/*
+** Bestellungen
+*/
+
+#bestellungen {
+  margin: 2em 0;
+  padding: 1em;
+  border: 3px solid #fff;
+  
+}
+
+.bestellung {
+  margin: 1em 0;
+  padding: 0.5em;
+  background-color: #fff;
+  border: 1px solid #eee;
+}
+
+.bestellung label {
+  float: left;
+  line-height: 2em;
+}
+
+.bestellung div {
+  margin-left: 150px;
+  line-height: 2em;
+}
+
+.messages {
+  margin: 2em 0;
+  padding: 1em;
+  border: solid #0af 3px;
+  background: #CCEEFF;
+}
+
