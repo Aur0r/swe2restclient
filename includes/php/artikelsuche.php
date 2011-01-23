@@ -1,7 +1,4 @@
-<?php ?>
-<div id="content">
-</div>
-<?php 
+﻿<?php 
 	if(!isset($_POST['submit_article_articleno'])) :
 ?>
 
@@ -32,7 +29,7 @@
 		
 		$price = $simple_xml->price;
 		str_replace('.', ',', $price);
-		$price = $price.'�';
+		$price = $price.'€';
 		
 		$attributes = $simple_xml->attributes();
 

@@ -11,7 +11,6 @@
 
 ?>
 
-<div id="content">
 <?php if(!isset($_POST['submit_profile_email'])) : ?>
 
 	<form action="<?php print $FILE_URL; ?>?bereich=profilsuche" method="post">
@@ -91,4 +90,3 @@
 			<?php endif; ?>
 	
 <?php endif; ?>
-</div>
