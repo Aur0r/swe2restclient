@@ -11,7 +11,6 @@
 
 ?>
 
-<div id="content">
 <?php if(!isset($_POST['submit_profile_email'])) : ?>
 
 	<form action="<?php print $FILE_URL; ?>?bereich=profilsuche" method="post">
@@ -71,24 +70,24 @@
 				$attributes = $bestellungen[0]->attributes();
 				
 				?>
-				<label for="bestellungen">Bestellungen des Benutzers:</label>
-				<div id="bestellungen">
-			<?php 
-				foreach($bestellungen as $bestellung) :
 				
-					$attributes = $bestellung->attributes();
-					$date = convert_date_german($bestellung->timestamp);
-			?>
-						<div id="bestellung">
+				<div id="bestellungen">
+        <h2>Bestellungen des Benutzers:</h2>
+          <?php 
+            foreach($bestellungen as $bestellung) :
+            
+              $attributes = $bestellung->attributes();
+              $date = convert_date_german($bestellung->timestamp);
+          ?>
+						<div class="bestellung">
 							<label for="bestellung-id">Bestellnummer:</label><div id="bestellung-id"><?php print $attributes['id']; ?></div>
 							<label for="bestellung-datum">Bestelldatum:</label><div id="bestellung-datum"><?php print $date; ?></div>
 						</div>
 						
-				<?php endforeach; ?>
+          <?php endforeach; ?>
 				</div>
 				<?php endif; ?>
 				<?php endif; ?>
 			<?php endif; ?>
 	
 <?php endif; ?>
-</div>

@@ -1,7 +1,4 @@
-<?php ?>
-<div id="content">
-</div>
-<?php 
+﻿<?php 
 	if(!isset($_POST['submit_article_articleno'])) :
 ?>
 
@@ -22,7 +19,7 @@
 		// HTTP Status ueberpruefen
 		if($status_code != 200) : ?>
 		
-		<div id="backlink"><a href="<?php print $FILE_URL; ?>?bereich=profilsuche">Anderen Artikel suchen</a></div>
+		<div id="backlink"><a href="<?php print $FILE_URL; ?>?bereich=artikelsuche">Anderen Artikel suchen</a></div>
 		<div class="error messages"><?php print 'Der Artikel mit der Artikelnummer "'.$articleno.'" existiert nicht.'; ?></div>
 		
 		<?php else:
@@ -32,7 +29,7 @@
 		
 		$price = $simple_xml->price;
 		str_replace('.', ',', $price);
-		$price = $price.'�';
+		$price = $price.'€';
 		
 		$attributes = $simple_xml->attributes();
 
